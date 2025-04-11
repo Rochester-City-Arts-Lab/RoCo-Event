@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <!-- Load a 3D primitive at specific GPS location -->
 <head>
-<title>Rochester City Arts Lab RoCo - May 2, 2025<title>
+<title>Rochester City Arts Lab RoCo - May 2, 2025</title>
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+
 <!-- Universal click handler -->
-<script type='text/javascript'>
-    document.addEventListener('click', function (evt) {
-        const target = evt.target;
-        if (target && target.classList.contains('clickable')) {
-        const url = target.getAttribute('href');
-        if (url) {
+<script>
+    AFRAME.registerComponent('click-redirect', {
+      schema: {
+        url: { type: 'string' }
+      },
+      init: function () {
+        this.el.addEventListener('click', () => {
+          const url = this.data.url;
+          if (url) {
             window.location.href = url;
-        }
-        }
+          }
+        });
+      }
     });
- </script>
+</script>
 </head>
-<body>
-<a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true; logarithmicDepthBuffer: true' vr-mode-ui='enabled: false'>
-    <a-camera gps-new-camera='gpsMinDistance: 5' arjs-device-orientation-controls='smoothingFactor: 0.1'></a-camera>
-    
-    <!-- put a 3d primitive at RoCo GPS location-->
-    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 43.156516312669; longitude: -77.60068827816" scale="5 5 5" position="1 10 1" class="clickable"></a-entity>
+<body style="margin: 0; overflow: hidden;">
+<a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true' vr-mode-ui='enabled: false'>
+
+    <a-assets>
+        <!--Preload Porsche Model for MallMix AR (DustWalkers)-->
+        <a-asset-item id="porsche" src="/ar/RoCo-event/assets/dustwalkers/porsche/scene.gltf"></a-asset-item>
+    </a-assets>
+ 
+    <!-- camera with raycaster and gps -->
+    <a-camera gps-new-camera='gpsMinDistance: 5' arjs-device-orientation-controls='smoothingFactor: 0.1'>
+        <a-entity cursor="fuse: false; rayOrigin: mouse" raycaster="objects: [click-redirect]"></a-entity>
+    </a-camera>
+
+    <!-- put a 3d primitive at RoCo GPS location (for testing)-->
+    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 43.16596; longitude: -77.56084" scale="5 5 5" position="0 0 0" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
+
+
+
+    <!-- ======= Add your groups code below ======= -->
 
     <!--Added Porsche Model for MallMix AR (DustWalkers)-->
-    <a-gltf-model id="porsche" 
-    src="https://people.rit.edu/kka7705/IGME-480-Workshops/final-project/MallMixAR.github.io/porsche/scene.gltf"
-    gps-new-entity-place="latitude: 43.156516312669; longitude: -77.60068827816"
-    scale="1 1 1" position="0 5 0" rotation="0 0 0" class="clickable">
-    </a-gltf-model> 
+    <a-entity gltf-model="#porsche" gps-new-entity-place="latitude: 43.156516312669; longitude: -77.60068827816" scale="1 1 1" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
+    </a-entity> 
+
 
 </a-scene>
+  
 </body>
 </html>
