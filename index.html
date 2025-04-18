@@ -64,7 +64,7 @@
     schema: {
       sound: { type: 'selector' }, // sound
       url: { type: 'string' }, // url
-      delay: { type: 'number', default: 1000} // delay before redirect (in ms)
+      delay: { type: 'int', default: 1000} // delay before redirect (in ms)
     },
     init: function () {
       const el = this.el;
