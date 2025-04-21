@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rochester City Arts Lab @RoCo</title>
+<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false' vr-mode-ui='enabled: false'>
+
+    <!-- preload assets -->
+    <a-assets>
+        <!-- preload TunnelVision audio & 3d model -->
+        <audio id="tunnelAudio" src="/ar/RoCo-event/assets/tunnelvision/old-train.mp3" type="audio/mpeg" preload="auto" loop="false" crossorigin="anonymous"></audio>
+        <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
+    </a-assets>
+  
+    <!-- camera with raycaster and gps -->
+    <a-camera look-controls-enabled='false' gps-camera='gpsMinDistance: 5' arjs-look-controls='smoothingFactor: 0.1'>
+      <a-entity cursor="fuse: false; rayOrigin: mouse" raycaster="near: 0.1; objects: .clickable"></a-entity>
+    </a-camera>
+
+    <!--TunnelVision Model-->
+    <a-entity class="clickable" gps-entity-place="latitude: 43.156600011584333; longitude: -77.6006000118921 position="1 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
+      <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
+      <a-box position="1 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-box>
+    </a-entity>
+
+</a-scene>
+
+<!-- Universal click handler -->
+<script>
+  AFRAME.registerComponent('click-redirect', {
+    schema: {
+      url: { type: 'string' }
+    },
+    init: function () {
+      this.el.addEventListener('click', () => {
+        const url = this.data.url;
+        if (url) {
+          window.location.href = url;
+        }
+      });
+    }
+  });
+
+  AFRAME.registerComponent('click-sound-redirect', {
+    schema: {
+      sound: { type: 'selector' }, // sound
+      url: { type: 'string' }, // url
+      delay: { type: 'int', default: 1000} // delay before redirect (in ms)
+    },
+    init: function () {
+      const el = this.el;
+      const data = this.data;
+      // Create and configure audio element
+      this.audio = new Audio(data.sound.getAttribute('src'));
+      el.addEventListener('click', () => {
+        if(this.audio) {
+          this.audio.play().catch((err) => {
+            console.warn('Playback failed:', err);
+          });
+        }
+        if(data.url) {
+          setTimeout(() => {
+            window.location.href = data.url;
+          }, data.delay); // Redirect after playing audio
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
