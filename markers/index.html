@@ -14,18 +14,30 @@
         <!-- preload TunnelVision audio & 3d model -->
         <audio id="tunnelAudio" src="/ar/RoCo-event/assets/tunnelvision/old-train.mp3" type="audio/mpeg" preload="auto" loop="false" crossorigin="anonymous"></audio>
         <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
+
+        <!--Preload 2d image for ECHOES (Cha-Ching-O)-->
+        <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png"></a-asset-item>
     </a-assets>
   
-    <!-- camera with raycaster and gps -->
-    <a-camera look-controls-enabled='false' gps-camera='gpsMinDistance: 5' arjs-look-controls='smoothingFactor: 0.1'>
+    <!-- camera with raycaster -->
+    <a-camera look-controls-enabled='false'>
       <a-entity cursor="fuse: false; rayOrigin: mouse" raycaster="near: 0.1; objects: .clickable"></a-entity>
     </a-camera>
 
-    <!--TunnelVision Model-->
-    <a-entity class="clickable" gps-entity-place="latitude: 43.156600011584333; longitude: -77.6006000118921 position="1 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
-      <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
-      <a-box position="1 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-box>
-    </a-entity>
+    <!--TunnelVision Model & Marker-->
+    <a-marker type="pattern" preset="custom" url="/ar/Roco-event/assets/tunnelvision/tunnel_vision_marker.patt">
+      <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
+        <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
+        <a-box position="1 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-box>
+      </a-entity>
+    </a-marker>
+
+    <!--Echoes image/plane & marker-->
+    <a-marker type="pattern" preset="custom" url="/ar/Roco-event/assets/chachingo/pattern-echoesMarker.patt">
+      <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
+        <a-plane src="#echoes" class="clickable" height="200" width="200" rotation="-90 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-plane>
+      </a-entity>
+    </a-marker>
 
 </a-scene>
 
