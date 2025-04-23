@@ -16,7 +16,7 @@
         <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
 
         <!--Preload 2d image for ECHOES (Cha-Ching-O)-->
-        <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png"></a-asset-item>
+        <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png">
     </a-assets>
   
     <!-- camera with raycaster -->
@@ -35,7 +35,7 @@
     <!--Echoes image/plane & marker-->
     <a-marker type="pattern" preset="custom" url="/ar/Roco-event/assets/chachingo/pattern-echoesMarker.patt">
       <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
-        <a-plane src="#echoes" class="clickable" height="200" width="200" rotation="-90 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-plane>
+        <a-img src="#echoes" class="clickable" height="1" width="1" rotation="-90 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-img>
       </a-entity>
     </a-marker>
 
