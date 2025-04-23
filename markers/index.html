@@ -16,7 +16,7 @@
         <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
 
         <!--Preload Porsche Model for MallMix AR (DustWalkers)-->
-        <a-asset-item id="porsche" src="/ar/RoCo-event/assets/dustwalkers/porsche/scene.gltf" ></a-asset-item>
+        <a-asset-item id="porsche" src="/ar/RoCo-event/assets/dustwalkers/porsche/scene.gltf"></a-asset-item>
 
         <!--Preload 2d image for ECHOES (Cha-Ching-O)-->
         <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png">
@@ -28,7 +28,7 @@
     </a-camera>
 
     <!--TunnelVision Model & Marker-->
-    <a-marker type="pattern" preset="custom" url="/ar/Roco-event/assets/tunnelvision/tunnel_vision_marker.patt">
+    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/tunnelvision/tunnel_vision_marker.patt">
       <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
         <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
         <a-box position="1 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-box>
@@ -36,16 +36,16 @@
     </a-marker>
 
     <!--Echoes image/plane & marker-->
-    <a-marker type="pattern" preset="custom" url="/ar/Roco-event/assets/chachingo/pattern-echoesMarker.patt">
+    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/chachingo/pattern-echoesMarker.patt">
       <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
         <a-img src="#echoes" class="clickable" height="1" width="1" rotation="-90 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-img>
       </a-entity>
     </a-marker>
 
     <!--Dustwalkers 3d model & marker-->
-    <a-marker type="pattern" preset="custom" url="/ar/Roco-event/assets/dustwalkers/pattern-mall.patt">
+    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/dustwalkers/pattern-mall.patt">
       <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
-        <a-entity class="clickable" gltf-model="#porsche"  scale="1 1 1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
+        <a-entity class="clickable" gltf-model="#porsche"  scale="2 2 2" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
         <a-box position="0 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
       </a-entity>
     </a-marker>
