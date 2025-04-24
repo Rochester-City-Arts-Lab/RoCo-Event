@@ -40,7 +40,7 @@
     </a-assets>
   
     <!-- camera with raycaster and gps -->
-    <a-camera look-controls-enabled='false' gps-camera='gpsMinDistance: 5' arjs-look-controls='smoothingFactor: 0.1'>
+    <a-camera look-controls-enabled='false' gps-camera='gpsMinDistance: 5' arjs-look-controls='smoothingFactor: 0.1' gpsTimeInterval="1000">
       <a-entity cursor="fuse: false; rayOrigin: mouse" raycaster="near: 0.1; objects: .clickable"></a-entity>
     </a-camera>
 
@@ -52,43 +52,43 @@
     <!-- ======= Add your groups code below ======= -->
   
     <!--Porsche Model for MallMix AR (DustWalkers)-->
-    <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.16598126675294; longitude: -77.60062321951317" click-redirect="url: https://rcal.ccastellanos.com">
+    <a-entity class="clickable" position="0 1 1" rotation="0 0 0" gps-entity-place="latitude: 43.15638702804051; longitude: -77.60048198721182" click-redirect="url: https://rcal.ccastellanos.com">
       <a-entity class="clickable" gltf-model="#porsche"  scale="1 1 1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
       <a-box position="0 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
-
+  
     <!--GABAR Model-->
-    <a-entity class="clickable" gps-entity-place="latitude: 43.156510476524305; longitude: -77.60061521951011" position="0 1 3" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
+    <a-entity class="clickable" gps-entity-place="latitude: 43.1564893565429; longitude: -77.6004775691252" position="0 1 3" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
       <a-entity class="clickable" gltf-model="#gabar" scale="20 20 20" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
       <a-box position="0 1.5 0" width="3" height="3" depth="3" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
 
     <!--TunnelVision Model-->
-    <a-entity class="clickable" gps-entity-place="latitude: 43.156600011584333; longitude: -77.6006000118921" position="1 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
+    <a-entity class="clickable" gps-entity-place="latitude: 43.156441818126076; longitude: -77.6006631287628" position="1 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
       <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
       <a-box position="0 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-box>
     </a-entity>
 
     <!--Echoes image/plane-->
-    <a-entity class="clickable" gps-entity-place="latitude: 43.1566108011587213; longitude: -77.6005900118994" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
+    <a-entity class="clickable" gps-entity-place="latitude: 43.156423286190886; longitude: -77.60051843642634" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
       <a-image src="#echoes" class="clickable" height="1" width="1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-image>
       <a-box position="0 1 0" width="1" height="1" depth="1" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
 
     <!-- Graffiti House model -->
-    <a-entity class="clickable" position="-1 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.1566225515587018; longitude: -77.6006100118881" click-redirect="url: https://rcal.ccastellanos.com">
+    <a-entity class="clickable" position="-1 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.15633143216815; longitude: -77.60073381814854" click-redirect="url: https://rcal.ccastellanos.com">
       <a-entity class="clickable" gltf-model="#graffiti" scale="1 1 1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
       <a-box position="0 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
-
+  
     <!-- Garbage Plate model -->
-    <a-entity class="clickable" position="1 0 3" rotation="0 0 0" gps-entity-place="latitude: 43.1566025513598011; longitude: -77.6006505115861" click-redirect="url: https://rcal.ccastellanos.com">
+    <a-entity class="clickable" position="1 25 3" rotation="0 0 0" gps-entity-place="latitude: 43.15644987548746; longitude: -77.60071283223716" click-redirect="url: https://rcal.ccastellanos.com">
       <a-entity class="clickable" gltf-model="#garbage" scale="0.5 0.5 0.5" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
       <a-box position="0 1 0" width="1" height="1" depth="1" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
 
     <!-- ARochester video -->
-    <a-entity class="clickable" position="0 0 -2" rotation="0 0 0" gps-entity-place="latitude: 43.1566925515580019; longitude: -77.6006050112856" click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14500">
+    <a-entity class="clickable" position="0 5 0" rotation="0 0 0" gps-entity-place="latitude: 43.156349975304956; longitude: -77.60065756020305" click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14500">
       <a-video src="#aroc" width="2" height="2" class="clickable" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14500"></a-video>
       <a-box position="0 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14500"></a-box>
     </a-entity>
@@ -125,7 +125,7 @@
       el.addEventListener('click', () => {
         if(this.audio) {
           this.audio.play().catch((err) => {
-            console.warn('Playback failed:', err);
+            console.warn('Audio playback failed:', err);
           });
         }
         if(data.url) {
@@ -152,7 +152,7 @@
       el.addEventListener('click', () => {
         if(!redirected && this.video) {
           this.video.play().catch((err) => {
-            console.warn('Playback failed:', err);
+            console.warn('Video playback failed:', err);
           });
         }
         if(data.url) {

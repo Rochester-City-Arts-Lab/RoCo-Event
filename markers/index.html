@@ -11,15 +11,12 @@
 
     <!-- preload assets -->
     <a-assets>
-        <!-- preload TunnelVision audio & 3d model -->
-        <audio id="tunnelAudio" src="/ar/RoCo-event/assets/tunnelvision/old-train.mp3" type="audio/mpeg" preload="auto" loop="false" crossorigin="anonymous"></audio>
-        <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
+      <!-- preload TunnelVision audio & 3d model -->
+      <audio id="tunnelAudio" src="/ar/RoCo-event/assets/tunnelvision/old-train.mp3" type="audio/mpeg" preload="auto" loop="false" crossorigin="anonymous"></audio>
+      <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
 
-        <!--Preload Porsche Model for MallMix AR (DustWalkers)-->
-        <a-asset-item id="porsche" src="/ar/RoCo-event/assets/dustwalkers/porsche/scene.gltf"></a-asset-item>
-
-        <!--Preload 2d image for ECHOES (Cha-Ching-O)-->
-        <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png">
+      <!--Preload 2d image for ECHOES (Cha-Ching-O)-->
+      <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png">
     </a-assets>
   
     <!-- camera with raycaster -->
@@ -36,17 +33,10 @@
     </a-marker>
 
     <!--Echoes image/plane & marker-->
-    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/chachingo/pattern-echoesMarker.patt">
-      <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
-        <a-img src="#echoes" class="clickable" height="1" width="1" rotation="-90 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-img>
-      </a-entity>
-    </a-marker>
-
-    <!--Dustwalkers 3d model & marker-->
-    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/dustwalkers/pattern-mall.patt">
-      <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
-        <a-entity class="clickable" gltf-model="#porsche"  scale="2 2 2" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
-        <a-box position="0 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
+    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/chachingo/pattern-SBA-Silhouette.patt">
+      <a-entity class="clickable" position="0 1 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
+        <a-image src="#echoes" class="clickable" height="1" width="1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-image>
+        <a-box position="0 1 0" width="1" height="1" depth="1" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
       </a-entity>
     </a-marker>
 
