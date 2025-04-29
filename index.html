@@ -38,6 +38,7 @@
         <a-asset-item id="jnj" src="/ar/RoCo-event/assets/jnj/xerox_alto/scene.gltf" ></a-asset-item>
 
         <!-- Yippee -->
+        <a-asset-item id="yippee" src="/ar/RoCo-event/assets/yippee/mage_logo_background.png"></a-asset-item>
 
     </a-assets>
   
@@ -99,6 +100,12 @@
     <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.15649073068895; longitude:-77.6003934021314" click-redirect="url: https://rcal.ccastellanos.com" look-at="[gps-camera]">
       <a-entity class="clickable" gltf-model="#jnj" scale="1 1 1" rotation="0 0 0" position="0 2 1" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
       <a-box position="0 2.5 1" width="1.5" height="1.5" depth="1.5" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
+    </a-entity>
+    
+    <!-- Yippee Patrol model -->
+    <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.156298692431974, longitude: -77.60091548845665" click-redirect="url: https://rcal.ccastellanos.com" look-at="[gps-camera]">
+      <a-entity class="clickable" gltf-model="#yippee" scale="1 1 1" rotation="0 0 0" position="0 1 1" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
+      <a-box position="0 5 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
 
 </a-scene>
