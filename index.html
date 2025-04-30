@@ -1,113 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rochester City Arts Lab @RoCo</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"
-    ></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-  </head>
-  <body style="margin: 0; overflow: hidden">
-    <a-scene
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false"
-      vr-mode-ui="enabled: false"
-    >
-      <!-- preload assets -->
-      <a-assets>
+<head>
+<title>Rochester City Arts Lab @RoCo</title>
+<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false' vr-mode-ui='enabled: false'>
+
+    <!-- preload assets -->
+    <a-assets>
         <!--Preload Porsche Model for MallMix AR (DustWalkers)-->
-        <a-asset-item
-          id="porsche"
-          src="/ar/RoCo-event/assets/dustwalkers/porsche/scene.gltf"
-        ></a-asset-item>
+        <a-asset-item id="porsche" src="/ar/RoCo-event/assets/dustwalkers/porsche/scene.gltf" ></a-asset-item>
 
         <!-- preload TunnelVision audio & 3d model -->
-        <audio
-          id="tunnelAudio"
-          src="/ar/RoCo-event/assets/tunnelvision/old-train.mp3"
-          type="audio/mpeg"
-          preload="auto"
-          loop="false"
-          crossorigin="anonymous"
-        ></audio>
-        <a-asset-item
-          id="tunnel"
-          src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"
-        ></a-asset-item>
+        <audio id="tunnelAudio" src="/ar/RoCo-event/assets/tunnelvision/old-train.mp3" type="audio/mpeg" preload="auto" loop="false" crossorigin="anonymous"></audio>
+        <a-asset-item id="tunnel" src="/ar/RoCo-event/assets/tunnelvision/subway/scene.gltf"></a-asset-item>
 
         <!--Preload Model for GABAR (RIT 2129)-->
-        <a-asset-item
-          id="gabar"
-          src="/ar/RoCo-event/assets/gabar/sample.glb"
-        ></a-asset-item>
+        <a-asset-item id="gabar" src="/ar/RoCo-event/assets/gabar/sample.glb"></a-asset-item>
 
         <!--Preload 2d image for ECHOES (Cha-Ching-O)-->
-        <img
-          id="echoes"
-          src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png"
-        />
+        <img id="echoes" src="/ar/RoCo-event/assets/chachingo/iVotedSticker.png">
 
         <!--Preload Model for Graffiti House-->
-        <a-asset-item
-          id="graffiti"
-          src="/ar/RoCo-event/assets/graffiti/house.glb"
-        ></a-asset-item>
+        <a-asset-item id="graffiti" src="/ar/RoCo-event/assets/graffiti/house.glb"></a-asset-item>
 
         <!--Preload Model for Garbage Plate-->
-        <a-asset-item
-          id="garbage"
-          src="/ar/RoCo-event/assets/garbageplate/gbPlate.gltf"
-        ></a-asset-item>
+        <a-asset-item id="garbage" src="/ar/RoCo-event/assets/garbageplate/gbPlate.gltf"></a-asset-item>
 
         <!--Preload video for ARochester-->
-        <video
-          id="aroc"
-          preload="auto"
-          autoplay
-          loop="true"
-          src="/ar/RoCo-event/assets/arochester/ARochester.mov"
-        ></video>
+        <video id="aroc" preload="auto" autoplay loop="true" src="/ar/RoCo-event/assets/arochester/ARochester.mov"></video>
 
         <!-- Preload JNJ model -->
-        <a-asset-item
-          id="jnj"
-          src="/ar/RoCo-event/assets/jnj/xerox_alto/scene.gltf"
-        ></a-asset-item>
+        <a-asset-item id="jnj" src="/ar/RoCo-event/assets/jnj/xerox_alto/scene.gltf" ></a-asset-item>
 
         <!-- Preload Yippee image -->
-        <img
-          id="yippee"
-          src="/ar/RoCo-event/assets/yippee/mage_logo_background.png"
-        />
-      </a-assets>
+        <img id="yippee" src="/ar/RoCo-event/assets/yippee/mage_logo_background.png">
+    </a-assets>
+  
+    <!-- camera with raycaster and gps -->
+    <a-camera look-controls-enabled='false' gps-camera='gpsMinDistance: 1; positionMinAccuracy: 50; gpsTimeInterval:100' arjs-look-controls='smoothingFactor: 0.1' rotation-reader>
+      <a-entity cursor="fuse: false; rayOrigin: mouse" raycaster="near: 0.1; objects: .clickable"></a-entity>
+    </a-camera>
 
-      <!-- camera with raycaster and gps -->
-      <a-camera
-        look-controls-enabled="false"
-        gps-camera="gpsMinDistance: 1; positionMinAccuracy: 50; gpsTimeInterval:100"
-        arjs-look-controls="smoothingFactor: 0.1"
-        rotation-reader
-      >
-        <a-entity
-          cursor="fuse: false; rayOrigin: mouse"
-          raycaster="near: 0.1; objects: .clickable"
-        ></a-entity>
-      </a-camera>
-
-      <!-- put a 3d primitive at RoCo GPS location (for testing)-->
-      <!-- 
+     <!-- put a 3d primitive at RoCo GPS location (for testing)-->
+     <!-- 
      <a-entity class="clickable" material='color: red' geometry='primitive: box' gps-entity-place="latitude: 43.165940061; longitude: -77.56080880101" scale="2 2 2" position="0 0 1" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
      -->
-<<<<<<< HEAD
-  
-    <!-- ======= Add your groups code below ======= -->
-  
+
     <!--Porsche Model for MallMix AR (DustWalkers)-->
     <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.15638702804051; longitude: -77.60048198721182" click-redirect="url: https://rcal.ccastellanos.com" look-at="[gps-camera]">
       <a-entity class="clickable" gltf-model="#porsche" scale="2 2 2" position="0 2 1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
@@ -149,354 +92,89 @@
       <a-video src="#aroc" width="3" height="3" position="0 15 5" class="clickable" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14000"></a-video>
       <a-box position="0 16 5" width="3" height="3" depth="3" opacity="0" class="clickable" click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14000"></a-box>
     </a-entity>
-=======
 
-      <!-- ======= Add your groups code below ======= -->
+    <!-- Xerox Alto model (JNJ) -->
+    <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.15649073068895; longitude:-77.6003934021314" click-redirect="url: https://rcal.ccastellanos.com" look-at="[gps-camera]">
+      <a-entity class="clickable" gltf-model="#jnj" scale="1 1 1" rotation="0 0 0" position="0 2 1" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-entity>
+      <a-box position="0 2.5 1" width="1.5" height="1.5" depth="1.5" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
+    </a-entity>
 
-      <!--Porsche Model for MallMix AR (DustWalkers)-->
-      <a-entity
-        class="clickable"
-        position="0 0 0"
-        rotation="0 0 0"
-        gps-entity-place="latitude: 43.15638702804051; longitude: -77.60048198721182"
-        click-redirect="url: https://rcal.ccastellanos.com/mallmix-ar/"
-        look-at="[gps-camera]"
-      >
-        <a-entity
-          class="clickable"
-          gltf-model="#porsche"
-          scale="2 2 2"
-          position="0 2 1"
-          rotation="0 0 0"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com/mallmix-ar/"
-        ></a-entity>
-        <a-box
-          position="0 3 1"
-          width="3"
-          height="3"
-          depth="3"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com/mallmix-ar/"
-        ></a-box>
-      </a-entity>
-
-      <!--GABAR Model-->
-      <a-entity
-        class="clickable"
-        gps-entity-place="latitude: 43.1564893565429; longitude: -77.6004775691252"
-        position="0 0 0"
-        rotation="0 0 0"
-        click-redirect="url: https://rcal.ccastellanos.com"
-        look-at="[gps-camera]"
-      >
-        <a-entity
-          class="clickable"
-          gltf-model="#gabar"
-          scale="10 10 10"
-          position="2 15 3"
-          rotation="0 0 0"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-entity>
-        <a-box
-          position="2 16 3"
-          width="10"
-          height="10"
-          depth="10"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-box>
-      </a-entity>
-
-      <!--TunnelVision Model-->
-      <a-entity
-        class="clickable"
-        gps-entity-place="latitude: 43.156441818126076; longitude: -77.6006631287628"
-        position="0 0 0"
-        rotation="0 0 0"
-        click-sound-redirect="sound: #tunnelAudio; url: https://rcal.ccastellanos.com/tunnel-vision/; delay: 5000"
-        look-at="[gps-camera]"
-      >
-        <a-entity
-          class="clickable"
-          gltf-model="#tunnel"
-          scale="0.0005 0.0005 0.0005"
-          rotation="0 0 0"
-          position="1.5 0.5 2"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-sound-redirect="sound: #tunnelAudio; url: https://rcal.ccastellanos.com/tunnel-vision/; delay: 5000"
-        ></a-entity>
-        <a-box
-          position="1.5 1 2"
-          width="1"
-          height="1"
-          depth="1"
-          opacity="0"
-          class="clickable"
-          click-sound-redirect="sound: #tunnelAudio; url: https://rcal.ccastellanos.com/tunnel-vision/; delay: 5000"
-        ></a-box>
-      </a-entity>
->>>>>>> ba3fb0083c8ff15c5f65acfa04507873de240ec4
-
-      <!--Echoes image/plane-->
-      <a-entity
-        class="clickable"
-        gps-entity-place="latitude: 43.156423286190886; longitude: -77.60051843642634"
-        position="0 0 0"
-        rotation="0 0 0"
-        scale="1.1 1.1 1.1"
-        click-redirect="url: https://rcal.ccastellanos.com"
-        look-at="[gps-camera]"
-      >
-        <a-image
-          src="#echoes"
-          class="clickable"
-          height="1"
-          width="1"
-          position="0 1 1"
-          rotation="0 0 0"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-image>
-        <a-box
-          position="0 1.5 1"
-          width="1.5"
-          height="1.5"
-          depth="1.5"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-box>
-      </a-entity>
-
-<<<<<<< HEAD
     <!-- Yippee Patrol image/plane -->
     <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.156427564724225, longitude: -77.60028583865805" click-redirect="url: https://rcal.ccastellanos.com" look-at="[gps-camera]">
       <a-image src="#yippee" class="clickable" height="3" width="3" position="0 4 3" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-image>
       <a-box position="0 5 3" width="3.5" height="3.5" depth="3.5" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
 </a-scene>
-=======
-      <!-- Graffiti House model -->
-      <a-entity
-        class="clickable"
-        position="-1 0 0"
-        rotation="0 0 0"
-        gps-entity-place="latitude: 43.15633143216815; longitude: -77.60073381814854"
-        click-redirect="url: https://rcal.ccastellanos.com"
-        look-at="[gps-camera]"
-      >
-        <a-entity
-          class="clickable"
-          gltf-model="#graffiti"
-          scale="1 1 1"
-          rotation="0 0 0"
-          position="-1 2 1"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-entity>
-        <a-box
-          position="-1 2.5 1"
-          width="1.5"
-          height="1.5"
-          depth="1.5"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-box>
-      </a-entity>
->>>>>>> ba3fb0083c8ff15c5f65acfa04507873de240ec4
 
-      <!-- Garbage Plate model -->
-      <a-entity
-        class="clickable"
-        position="1 25 3"
-        rotation="0 0 0"
-        gps-entity-place="latitude: 43.15644987548746; longitude: -77.60071283223716"
-        click-redirect="url: https://rcal.ccastellanos.com"
-        look-at="[gps-camera]"
-      >
-        <a-entity
-          class="clickable"
-          gltf-model="#garbage"
-          scale="2 2 2"
-          rotation="0 0 0"
-          position="0 15 5"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-entity>
-        <a-box
-          position="0 16 5"
-          width="2"
-          height="2"
-          depth="2"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-box>
-      </a-entity>
-
-      <!-- ARochester video -->
-      <a-entity
-        class="clickable"
-        position="0 5 0"
-        rotation="0 0 0"
-        gps-entity-place="latitude: 43.156349975304956; longitude: -77.60065756020305"
-        click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14500"
-        look-at="[gps-camera]"
-      >
-        <a-video
-          src="#aroc"
-          width="3"
-          height="3"
-          position="0 5 0"
-          class="clickable"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14000"
-        ></a-video>
-        <a-box
-          position="0 5 0"
-          width="3"
-          height="3"
-          depth="3"
-          opacity="0"
-          class="clickable"
-          click-video-redirect="video: aroc; url: https://www.ccastellanos.com; delay: 14000"
-        ></a-box>
-      </a-entity>
-
-      <!-- Xerox Alto model (JNJ) -->
-      <a-entity
-        class="clickable"
-        position="0 0 0"
-        rotation="0 0 0"
-        gps-entity-place="latitude: 43.15649073068895; longitude:-77.6003934021314"
-        click-redirect="url: https://rcal.ccastellanos.com/rochestar/"
-        look-at="[gps-camera]"
-      >
-        <a-entity
-          class="clickable"
-          gltf-model="#jnj"
-          scale="1 1 1"
-          rotation="0 0 0"
-          position="0 2 1"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com/rochestar/"
-        ></a-entity>
-        <a-box
-          position="0 2.5 1"
-          width="1.5"
-          height="1.5"
-          depth="1.5"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com/rochestar/"
-        ></a-box>
-      </a-entity>
-
-      <!-- Yippee Patrol image/plane -->
-      <a-entity
-        class="clickable"
-        position="0 10 0"
-        rotation="0 0 0"
-        gps-entity-place="latitude: 43.1564253086685, longitude: -77.60039109532863"
-        click-redirect="url: https://rcal.ccastellanos.com"
-        look-at="[gps-camera]"
-      >
-        <a-image
-          src="#yippee"
-          class="clickable"
-          height="1"
-          width="1"
-          position="0 1 1"
-          rotation="0 0 0"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-image>
-        <a-box
-          position="0 1 0"
-          width="1.5"
-          height="1.5"
-          depth="1.5"
-          opacity="0"
-          class="clickable"
-          click-redirect="url: https://rcal.ccastellanos.com"
-        ></a-box>
-      </a-entity>
-    </a-scene>
-
-    <!-- Universal click handler -->
-    <script>
-      AFRAME.registerComponent("click-redirect", {
-        schema: {
-          url: { type: "string" },
-        },
-        init: function () {
-          this.el.addEventListener("click", () => {
-            const url = this.data.url;
-            if (url) {
-              window.location.href = url;
-            }
-          });
-        },
+<!-- Universal click handler -->
+<script>
+  AFRAME.registerComponent('click-redirect', {
+    schema: {
+      url: { type: 'string' }
+    },
+    init: function () {
+      this.el.addEventListener('click', () => {
+        const url = this.data.url;
+        if (url) {
+          window.location.href = url;
+        }
       });
+    }
+  });
 
-      AFRAME.registerComponent("click-sound-redirect", {
-        schema: {
-          sound: { type: "selector" }, // sound
-          url: { type: "string" }, // url
-          delay: { type: "int", default: 1000 }, // delay before redirect (in ms)
-        },
-        init: function () {
-          const el = this.el;
-          const data = this.data;
-          // Create and configure audio element
-          this.audio = new Audio(data.sound.getAttribute("src"));
-          el.addEventListener("click", () => {
-            if (this.audio) {
-              this.audio.play().catch((err) => {
-                console.warn("Audio playback failed:", err);
-              });
-            }
-            if (data.url) {
-              setTimeout(() => {
-                window.location.href = data.url;
-              }, data.delay); // Redirect after playing audio
-            }
+  AFRAME.registerComponent('click-sound-redirect', {
+    schema: {
+      sound: { type: 'selector' }, // sound
+      url: { type: 'string' }, // url
+      delay: { type: 'int', default: 1000} // delay before redirect (in ms)
+    },
+    init: function () {
+      const el = this.el;
+      const data = this.data;
+      // Create and configure audio element
+      this.audio = new Audio(data.sound.getAttribute('src'));
+      el.addEventListener('click', () => {
+        if(this.audio) {
+          this.audio.play().catch((err) => {
+            console.warn('Audio playback failed:', err);
           });
-        },
+        }
+        if(data.url) {
+          setTimeout(() => {
+            window.location.href = data.url;
+          }, data.delay); // Redirect after playing audio
+        }
       });
+    }
+  });
 
-      AFRAME.registerComponent("click-video-redirect", {
-        schema: {
-          video: { type: "string" }, // video
-          url: { type: "string" }, // url
-          delay: { type: "int", default: 1000 }, // delay before redirect (in ms)
-        },
-        init: function () {
-          const el = this.el;
-          const data = this.data;
-          // Create and configure video element
-          this.video = document.getElementById(data.video);
-          let redirected = false;
-          el.addEventListener("click", () => {
-            if (!redirected && this.video) {
-              this.video.play().catch((err) => {
-                console.warn("Video playback failed:", err);
-              });
-            }
-            if (data.url) {
-              setTimeout(() => {
-                window.location.href = data.url;
-              }, data.delay); // Redirect after playing video
-              redirected = true;
-            }
+  AFRAME.registerComponent('click-video-redirect', {
+    schema: {
+      video: { type: 'string' }, // video
+      url: { type: 'string' }, // url
+      delay: { type: 'int', default: 1000} // delay before redirect (in ms)
+    },
+    init: function () {
+      const el = this.el;
+      const data = this.data;
+      // Create and configure video element
+      this.video = document.getElementById(data.video);
+      let redirected = false;
+      el.addEventListener('click', () => {
+        if(!redirected && this.video) {
+          this.video.play().catch((err) => {
+            console.warn('Video playback failed:', err);
           });
-        },
+        }
+        if(data.url) {
+          setTimeout(() => {
+            window.location.href = data.url;
+          }, data.delay); // Redirect after playing video
+          redirected = true;
+        }
       });
-    </script>
-  </body>
+    }
+  });
+</script>
+</body>
 </html>
