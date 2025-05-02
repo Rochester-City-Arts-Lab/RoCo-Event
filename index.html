@@ -39,6 +39,9 @@
 
         <!-- Preload Yippee image -->
         <img id="yippee" src="/ar/RoCo-event/assets/yippee/mage_logo_background.png">
+
+        <!-- Preload RIT poster image for ARochester-->
+         <img id="RITPoster" src="https://people.rit.edu/cae6859/480/ARochester/assets/RIT_poster.png">
     </a-assets>
   
     <!-- camera with raycaster and gps -->
@@ -87,10 +90,10 @@
       <a-box position="1 16 8" width="2" height="2" depth="2" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
     </a-entity>
 
-    <!-- ARochester video -->
-    <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.156349975304956; longitude: -77.60065756020305" click-video-redirect="video: aroc; url: https://rcal.ccastellanos.com; delay: 14500" look-at="[gps-camera]">
-      <a-video src="#aroc" width="3" height="3" position="0 15 5" class="clickable" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-video-redirect="video: aroc; url: https://rcal.ccastellanos.com; delay: 14000"></a-video>
-      <a-box position="0 16 5" width="3" height="3" depth="3" opacity="0" class="clickable" click-video-redirect="video: aroc; url: https://rcal.ccastellanos.com; delay: 14000"></a-box>
+    <!-- ARochester image -->
+    <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.156427564724225; longitude: -77.60028583865805" click-redirect="url: https://christinee480.wordpress.com/2025/05/02/arochester-finalproject/" look-at="[gps-camera]">
+      <a-image src="#RITPoster" class="clickable" height="1" width="1" position="0 4 3" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url:https://christinee480.wordpress.com/2025/05/02/arochester-finalproject/"></a-image>
+      <a-box position="0 5 3" width="1.5" height="1.5" depth="1.5" opacity="0" class="clickable" click-redirect="url: https://christinee480.wordpress.com/2025/05/02/arochester-finalproject/"></a-box>
     </a-entity>
 
     <!-- Xerox Alto model (JNJ) -->
