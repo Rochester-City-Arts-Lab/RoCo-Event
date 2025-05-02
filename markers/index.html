@@ -29,26 +29,27 @@
 
     <!--TunnelVision Model & Marker-->
     <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/tunnelvision/tunnel_vision_marker.patt">
-      <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000">
-        <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-entity>
-        <a-box position="1 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://www.ccastellanos.com; delay: 5000"></a-box>
+      <a-entity class="clickable" position="0 0 0" rotation="0 0 0" click-sound-redirect="sound: #tunnelAudio; url: https://rcal.ccastellanos.com/tunnel-vision; delay: 5000">
+        <a-entity class="clickable" gltf-model="#tunnel" scale="0.001 0.001 0.001" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-sound-redirect="sound: #tunnelAudio; url: https://rcal.ccastellanos.com/tunnel-vision; delay: 5000"></a-entity>
+        <a-box position="1 1 0" width="2" height="2" depth="2" opacity="0" class="clickable" click-sound-redirect="sound: #tunnelAudio; url: https://rcal.ccastellanos.com/tunnel-vision; delay: 5000"></a-box>
       </a-entity>
     </a-marker>
 
     <!--Echoes image/plane & marker-->
     <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/chachingo/pattern-SBA-Silhouette.patt">
-      <a-entity class="clickable" position="0 1 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com">
-        <a-image src="#echoes" class="clickable" height="1" width="1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com"></a-image>
-        <a-box position="0 1 0" width="1" height="1" depth="1" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com"></a-box>
+      <a-entity class="clickable" position="0 1 0" rotation="0 0 0" click-redirect="url: https://rcal.ccastellanos.com/echoes-from-mt-hope/">
+        <a-image src="#echoes" class="clickable" height="1" width="1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://rcal.ccastellanos.com/echoes-from-mt-hope/"></a-image>
+        <a-box position="0 1 0" width="1" height="1" depth="1" opacity="0" class="clickable" click-redirect="url: https://rcal.ccastellanos.com/echoes-from-mt-hope/"></a-box>
       </a-entity>
     </a-marker>
 
-    <!-- Yippee Patrol image/plane -->
-    <a-entity class="clickable" position="0 0 0" rotation="0 0 0" gps-entity-place="latitude: 43.156427564724225; longitude: -77.60028583865805" click-redirect="url: https://blh6705.wordpress.com/2025/05/01/yippeepatrol-finalproject/" look-at="[gps-camera]">
-      <a-image src="#yippee" class="clickable" height="1" width="1" position="0 4 3" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://blh6705.wordpress.com/2025/05/01/yippeepatrol-finalproject/"></a-image>
-      <a-box position="0 5 3" width="1.5" height="1.5" depth="1.5" opacity="0" class="clickable" click-redirect="url: https://blh6705.wordpress.com/2025/05/01/yippeepatrol-finalproject/"></a-box>
-    </a-entity>
-
+    <!-- Yippee Patrol image/plane & marker -->
+    <a-marker type="pattern" preset="custom" url="/ar/RoCo-event/assets/yippee/pattern-yippee-marker.patt">
+      <a-entity class="clickable" position="0 1 0" rotation="0 0 0" click-redirect="url: https://blh6705.wordpress.com/2025/05/01/yippeepatrol-finalproject/">
+        <a-image src="#yippee" class="clickable" height="1" width="1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" click-redirect="url: https://blh6705.wordpress.com/2025/05/01/yippeepatrol-finalproject/"></a-image>
+        <a-box position="0 1 0" width="1" height="1" depth="1" opacity="0" class="clickable" click-redirect="url: https://blh6705.wordpress.com/2025/05/01/yippeepatrol-finalproject/"></a-box>
+      </a-entity>
+    </a-marker>
 </a-scene>
 
 <!-- Universal click handler -->
